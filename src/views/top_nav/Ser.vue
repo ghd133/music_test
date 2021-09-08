@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-04 22:10:07
- * @LastEditTime: 2021-09-05 10:56:36
+ * @LastEditTime: 2021-09-08 20:58:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\views\top_nav\ser.vue
@@ -20,6 +20,7 @@
         <i slot="suffix" class="el-input__icon el-icon-search" ref="serbtn"></i>
       </el-input>
     </div>
+    <!-- 听歌识曲图标 -->
     <div class="len">
       <i class="fa fa-podcast"></i>
     </div>
@@ -37,6 +38,8 @@ export default {
     }
   },
   methods: {
+
+    //以下两个方法控制输入框内提示文字的显示与影藏
     show() {
       this.tip = ''
       if (this.input === '') {

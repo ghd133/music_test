@@ -1,12 +1,15 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-03 11:10:51
- * @LastEditTime: 2021-09-08 00:38:50
+ * @LastEditTime: 2021-09-08 20:53:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\views\right_nav\OnLineMusic.vue
 -->
+
+
 <template>
+<!-- 左侧选项列表 -->
   <div class="">
     <div class="tit">{{ navdata.tit }}</div>
     <div class="nav_container">
