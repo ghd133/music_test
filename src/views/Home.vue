@@ -66,7 +66,7 @@ export default {
           {
             icon: 'fa fa-instagram',
             itemName: '电台',
-            path: 'p'
+            path: '/index/radio'
           }
         ]
       },

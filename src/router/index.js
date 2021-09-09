@@ -42,6 +42,11 @@ const routes = [
         name: 'recommend',
         component: () => import('@/views/right_nav/recommend.vue'),
         meta: { auth: true }
+      },
+      {
+        path: 'radio',
+        name: 'radio',
+        component: () => import('@/views/right_nav/radio.vue'),
       }
     ]
   },
