@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-02 18:09:45
- * @LastEditTime: 2021-09-08 10:49:13
+ * @LastEditTime: 2021-09-08 23:39:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \cloudMusic\src\views\Home.vue
@@ -160,7 +160,7 @@ export default {
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  line-height: 160px;
+  width: calc(100%-200%);
 }
 
 body > .el-container {

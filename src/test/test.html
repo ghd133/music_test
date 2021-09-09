@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 17:18:44
- * @LastEditTime: 2021-09-08 16:56:30
+ * @LastEditTime: 2021-09-08 22:34:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\test\test.html
@@ -20,6 +20,7 @@
     <button id="btn">登录状态</button>
     <button id="btn1">退出登录</button>
     <button id="btn2">获取歌单</button>
+    <button id="btn3">banner</button>
 
     <script>
       btn.onclick = function() {
@@ -58,6 +59,22 @@
       btn2.onclick = function() {
         axios
           .get('https://autumnfish.cn/recommend/resource', {
+            params: {
+              cookie:
+                'MUSIC_U=0d393b575f8eb1806938202879c044331571a7188cd4e052e27a3db64953c509519e07624a9f0053d78b6050a17a35e705925a4e6992f61d07c385928f88e8de; Max-Age=1296000; Expires=Thu, 23 Sep 2021 08:49:33 GMT; Path=/;;__csrf=60235df6ee389bf85a6fd02cd232aacf; Max-Age=1296010; Expires=Thu, 23 Sep 2021 08:49:43 GMT; Path=/;;NMTID=00OEAsS5S3tlhKsFkjJqIrsNFaOEN0AAAF7xJkdHA; Max-Age=315360000; Expires=Sat, 6 Sep 2031 08:49:33 GMT; Path=/;;__remember_me=true; Max-Age=1296000; Expires=Thu, 23 Sep 2021 08:49:33 GMT; Path=/;'
+            }
+          })
+          .then(res => {
+            console.log(res)
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      }
+
+      btn3.onclick = function() {
+        axios
+          .get('https://autumnfish.cn/banner', {
             params: {
               cookie:
                 'MUSIC_U=0d393b575f8eb1806938202879c044331571a7188cd4e052e27a3db64953c509519e07624a9f0053d78b6050a17a35e705925a4e6992f61d07c385928f88e8de; Max-Age=1296000; Expires=Thu, 23 Sep 2021 08:49:33 GMT; Path=/;;__csrf=60235df6ee389bf85a6fd02cd232aacf; Max-Age=1296010; Expires=Thu, 23 Sep 2021 08:49:43 GMT; Path=/;;NMTID=00OEAsS5S3tlhKsFkjJqIrsNFaOEN0AAAF7xJkdHA; Max-Age=315360000; Expires=Sat, 6 Sep 2031 08:49:33 GMT; Path=/;;__remember_me=true; Max-Age=1296000; Expires=Thu, 23 Sep 2021 08:49:33 GMT; Path=/;'
