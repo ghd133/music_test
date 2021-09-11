@@ -31,7 +31,7 @@ export default {
       default: true
     },
     datalist:{
-      type:Object
+      // type:Object
     }
   }
 }

@@ -28,7 +28,11 @@
           <Login></Login>
         </el-header>
         <el-main>
-          <router-view></router-view>
+          <div ref="radiowrapper" class="radiowrapper">
+            <div class="radiocontent">
+              <router-view></router-view>
+            </div>
+          </div>
         </el-main>
         <el-footer>Footer</el-footer>
       </el-container>
@@ -51,24 +55,24 @@ export default {
             icon: 'fa fa-beer',
             itemName: '推荐',
             path: '/index/recommend',
-            auth:true
+            auth: true,
           },
           {
             icon: 'fa fa-music',
             itemName: '音乐馆',
-            path: '/songsShop'
+            path: '/songsShop',
           },
           {
             icon: 'fa fa-video-camera',
             itemName: '视频',
-            path: 'o'
+            path: 'o',
           },
           {
             icon: 'fa fa-instagram',
             itemName: '电台',
-            path: '/index/radio'
-          }
-        ]
+            path: '/index/radio',
+          },
+        ],
       },
       mMusic: {
         tit: '我的音乐',
@@ -77,31 +81,31 @@ export default {
             icon: 'fa fa-heart',
             itemName: '我喜欢',
             path: 's',
-            auth:true
+            auth: true,
           },
           {
             icon: 'fa fa-desktop',
             itemName: '本地和下载',
-            path: 'k'
+            path: 'k',
           },
           {
             icon: 'fa fa-history',
             itemName: '播放历史',
-            path: 'v'
+            path: 'v',
           },
           {
             icon: 'fa fa-list',
             itemName: '试听列表',
-            path: 'i'
+            path: 'i',
           },
           {
             icon: 'fa fa-check-square-o',
             itemName: '已购音乐',
             path: 'c',
-            auth:true
-          }
-        ]
-      }
+            auth: true,
+          },
+        ],
+      },
     }
   },
   name: 'Home',
@@ -109,28 +113,48 @@ export default {
     Logo,
     OnLineMusic,
     Ser,
-    Login
+    Login,
   },
-  methods: {},
+  methods: {
+    init() {
+      this.$nextTick(function () {
+        const bs = new this.BScroll(this.$refs.radiowrapper, {
+          mouseWheel: {
+            speed: 20,
+            invert: false,
+            easeTime: 300,
+          },
+          scrollY: true,
+          scrollbar: true,
+          scrollbar: {
+            fade: true,
+          },
+        })
+      
+      })
+    },
+  },
   mounted() {
     new this.BScroll(this.$refs.navwrapper, {
       mouseWheel: {
         speed: 20,
         invert: false,
-        easeTime: 300
+        easeTime: 300,
       },
       scrollY: true,
       scrollbar: true,
       scrollbar: {
-        fade: true
-      }
+        fade: true,
+      },
     })
-  }
+
+    this.init()
+  },
 }
 </script>
 
 <style lang="less" scoped>
-.home{
+.home {
   min-width: 800px;
 }
 .el-header,
@@ -165,5 +189,19 @@ export default {
 
 body > .el-container {
   margin-bottom: 40px;
+}
+.el-footer {
+  position: fixed;
+  width: calc(100% - 100px);
+  bottom: 0;
+}
+.radiowrapper {
+  height: 550px;
+  overflow: hidden;
+  position: relative;
+  background-color: red;
+  .radiocontent {
+    background-color: blue;
+  }
 }
 </style>
