@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 23:35:26
- * @LastEditTime: 2021-09-09 10:52:41
+ * @LastEditTime: 2021-09-11 20:08:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\views\right_nav\recommend.vue
@@ -53,22 +53,13 @@ export default {
   },
 
   created() {
-    // ax.get('/banner', {
-    //   params: {
-    //     cookie: this.cookie
-    //   }
-    // }).then(res => {
-    //   if (res.code === 200) {
-    //     this.bannerlist = res.banners
-    //   }
-    // })
     this.getrecommend_songlist()
   },
 
   methods: {
     async getrecommend_songlist() {
       let res = await songlist(this.cookie)
-      this.slist = _.chunk(res.recommend, 4)
+      this.slist = res.recommend
     }
   }
 }
@@ -88,8 +79,11 @@ export default {
       font-weight: normal;
     }
     .slist {
-      display: flex;
-      justify-content: space-between;
+
+      .listCon{
+        
+      }
+
       min-width: 1200px;
     }
   }
