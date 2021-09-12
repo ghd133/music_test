@@ -1,21 +1,26 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 23:29:21
- * @LastEditTime: 2021-09-09 10:44:15
+ * @LastEditTime: 2021-09-12 20:22:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\components\SongListItem.vue
 -->
 
 <template>
-  <div class="listCon" :class="hover ? 'anima' : ''">
+  <div
+    class="listCon"
+    :class="hover ? 'anima' : ''"
+    ref="listitem"
+    :style="{ width: width }"
+  >
     <div class="box">
       <img :src="datalist.picUrl" />
       <i class="icon fa fa-play-circle"></i>
+      <slot name="mark"></slot>
     </div>
-    <slot name="mark"></slot>
-    <slot name="songstit"></slot>
-    <slot name="listUser"></slot>
+
+    <slot name="tit"></slot>
   </div>
 </template>
 
@@ -30,10 +35,15 @@ export default {
       type: Boolean,
       default: true
     },
-    datalist:{
-      // type:Object
+    datalist: {
+      type: Object
+    },
+    width: {
+      type: String,
+      default: '300px'
     }
-  }
+  },
+  mounted() {}
 }
 </script>
 
@@ -47,12 +57,12 @@ export default {
   cursor: pointer;
 
   .box {
-    width: 200px;
+    width: 100%;
     text-align: center;
     font-size: 16px;
     position: relative;
     top: 0;
-    transition: all .3s;
+    transition: all 0.3s;
 
     img {
       width: 100%;
@@ -100,7 +110,7 @@ export default {
     display: block;
   }
 }
-.anima:hover .box{
+.anima:hover .box {
   top: -5px;
 }
 .icon-bofang:hover {

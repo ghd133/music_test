@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 23:35:26
- * @LastEditTime: 2021-09-11 20:08:10
+ * @LastEditTime: 2021-09-12 20:31:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\views\right_nav\recommend.vue
@@ -25,7 +25,20 @@
           :datalist="item"
           v-for="(item, index) in slist"
           :key="index"
-        ></song-list-item>
+          width="180px"
+        >
+          <!-- 播放量 -->
+          <template v-slot:mark>
+            <div class="playcount">
+              <i class="fa fa-music"></i>{{ playCountFormat(item.playcount) }}
+            </div>
+          </template>
+
+          <!-- 歌单标题 -->
+          <template v-slot:tit>
+            <div class="songsName">{{ item.name }}</div>
+          </template>
+        </song-list-item>
       </div>
     </div>
     <!-- 今日推荐结束 -->
@@ -49,7 +62,21 @@ export default {
   },
 
   computed: {
-    ...mapState('user', ['cookie', 'profile'])
+    ...mapState('user', ['cookie', 'profile']),
+
+    //播放量
+    playCountFormat() {
+      return function(val) {
+        if (val > 0 && val < 10000) {
+          val = (val / 1000).toFixed(1) + '千'
+        } else if (val >= 10000 && val < 100000000) {
+          val = (val / 10000).toFixed(1) + '万'
+        } else {
+          val = (val / 100000000).toFixed(1) + '亿'
+        }
+        return val
+      }
+    }
   },
 
   created() {
@@ -68,23 +95,59 @@ export default {
 <style lang="less" scoped>
 .recommend {
   // background-color: salmon;
-  overflow: hidden;
+  padding-top: 20px;
+  padding-left: 20px;
   .tit {
     font-size: 30px;
     margin-bottom: 20px;
   }
   .today {
+    // background-color: blue;
     h2 {
       margin-bottom: 20px;
       font-weight: normal;
     }
     .slist {
+      display: flex;
+      flex-wrap: wrap;
+      min-width: 1200px;
+      justify-content: flex-start;
+      /deep/ .listCon {
+        margin-bottom: 30px;
+        margin-right: 30px;
 
-      .listCon{
-        
+        &:hover .playcount {
+          display: none;
+        }
       }
 
-      min-width: 1200px;
+      .songsName {
+        margin-top: 5px;
+        width: 100%;
+        font-size: 13px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .playcount {
+    color: white;
+    background-color: rgba(5, 0, 0, 0.6);
+    border-radius: 10px;
+    font-size: 12px;
+    // display: inline-block;
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    .fa {
+      margin-right: 3px;
     }
   }
 }

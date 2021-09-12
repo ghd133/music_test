@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-02 18:09:45
- * @LastEditTime: 2021-09-08 21:26:09
+ * @LastEditTime: 2021-09-12 20:09:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \cloudMusic\src\router\index.js
@@ -24,12 +24,12 @@ const routes = [
     meta: { title: '404' },
     component: () => import('../views/NotFoundComponent.vue')
   },
+  // {
+  //   path: '/',
+  //   redirect: '/index',//重定向
+  // },
   {
     path: '/',
-    redirect: '/index',//重定向
-  },
-  {
-    path: '/index',
     // name: 'Home',
     component: Home,
     children: [

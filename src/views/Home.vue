@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-02 18:09:45
- * @LastEditTime: 2021-09-09 12:56:51
+ * @LastEditTime: 2021-09-12 20:10:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \cloudMusic\src\views\Home.vue
@@ -54,7 +54,7 @@ export default {
           {
             icon: 'fa fa-beer',
             itemName: '推荐',
-            path: '/index/recommend',
+            path: '/recommend',
             auth: true,
           },
           {
@@ -70,7 +70,7 @@ export default {
           {
             icon: 'fa fa-instagram',
             itemName: '电台',
-            path: '/index/radio',
+            path: '/radio',
           },
         ],
       },
@@ -148,7 +148,7 @@ export default {
       },
     })
 
-    this.init()
+    // this.init()
   },
 }
 </script>
@@ -185,6 +185,7 @@ export default {
   background-color: #e9eef3;
   color: #333;
   width: calc(100%-200px);
+  padding: 0;
 }
 
 body > .el-container {
@@ -197,11 +198,8 @@ body > .el-container {
 }
 .radiowrapper {
   height: 550px;
-  overflow: hidden;
+  overflow: auto;
   position: relative;
-  background-color: red;
-  .radiocontent {
-    background-color: blue;
-  }
+  // background-color: red;
 }
 </style>
