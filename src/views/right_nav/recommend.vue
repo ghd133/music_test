@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 23:35:26
- * @LastEditTime: 2021-09-13 12:14:57
+ * @LastEditTime: 2021-09-13 12:23:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\views\right_nav\recommend.vue
@@ -26,15 +26,8 @@
           v-for="(item, index) in slist"
           :key="index"
           width="180px"
-          :playCount='false'
+          playCount
         >
-          <!-- 播放量 -->
-          <template v-slot:mark>
-            <div class="playcount">
-              <i class="fa fa-music"></i>{{ playCountFormat(item.playcount) }}
-            </div>
-          </template>
-
           <!-- 歌单标题 -->
           <template v-slot:tit>
             <div class="songsName">{{ item.name }}</div>
