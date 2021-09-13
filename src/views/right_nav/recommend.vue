@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 23:35:26
- * @LastEditTime: 2021-09-12 20:31:05
+ * @LastEditTime: 2021-09-13 12:14:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\views\right_nav\recommend.vue
@@ -26,6 +26,7 @@
           v-for="(item, index) in slist"
           :key="index"
           width="180px"
+          :playCount='false'
         >
           <!-- 播放量 -->
           <template v-slot:mark>
@@ -63,20 +64,6 @@ export default {
 
   computed: {
     ...mapState('user', ['cookie', 'profile']),
-
-    //播放量
-    playCountFormat() {
-      return function(val) {
-        if (val > 0 && val < 10000) {
-          val = (val / 1000).toFixed(1) + '千'
-        } else if (val >= 10000 && val < 100000000) {
-          val = (val / 10000).toFixed(1) + '万'
-        } else {
-          val = (val / 100000000).toFixed(1) + '亿'
-        }
-        return val
-      }
-    }
   },
 
   created() {

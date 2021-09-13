@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-05 11:02:17
- * @LastEditTime: 2021-09-08 17:13:04
+ * @LastEditTime: 2021-09-12 23:08:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\views\user\logo.vue
@@ -27,6 +27,14 @@ export default {
 
   created() {
     this.changeinfo()
+
+    if (!this.isLogin) {
+      this.$message({
+        message: '登录过期或未登录！',
+        type: 'warning'
+      })
+      this.open()
+    }
   },
   updated() {
     this.changeinfo()

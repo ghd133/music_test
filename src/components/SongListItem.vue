@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-07 23:29:21
- * @LastEditTime: 2021-09-12 20:22:11
+ * @LastEditTime: 2021-09-13 12:16:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vscodeworkspace\musicdemo\src\components\SongListItem.vue
@@ -17,7 +17,9 @@
     <div class="box">
       <img :src="datalist.picUrl" />
       <i class="icon fa fa-play-circle"></i>
-      <slot name="mark"></slot>
+      <div class="playcount" v-if="playCount">
+        <i class="fa fa-music"></i>{{ playCountFormat(datalist.playcount) }}
+      </div>
     </div>
 
     <slot name="tit"></slot>
@@ -31,19 +33,50 @@ export default {
   },
 
   props: {
+    //鼠标悬浮动画
     hover: {
       type: Boolean,
       default: true
     },
+
+    //数据源
     datalist: {
       type: Object
     },
+
+    //宽度
     width: {
       type: String,
       default: '300px'
-    }
+    },
+
+    //是否显示播放量
+    playCount: {
+      type: Boolean,
+      default: true
+    },
+
   },
-  mounted() {}
+  mounted() {},
+  computed: {
+
+    //格式化播放量
+    playCountFormat() {
+      return function(val) {
+        if (val > 0 && val < 10000) {
+          val = (val / 1000).toFixed(1) + '千'
+        } else if (val >= 10000 && val < 100000000) {
+          val = (val / 10000).toFixed(1) + '万'
+        } else {
+          val = (val / 100000000).toFixed(1) + '亿'
+        }
+        return val
+      }
+    }
+
+
+
+  },
 }
 </script>
 
@@ -99,6 +132,24 @@ export default {
       left: 0;
       transition: all 0.3s;
       border-radius: 10px;
+    }
+
+    .playcount {
+      color: white;
+      background-color: rgba(5, 0, 0, 0.6);
+      border-radius: 10px;
+      font-size: 12px;
+      // display: inline-block;
+      width: 70px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      .fa {
+        margin-right: 3px;
+      }
     }
   }
 
